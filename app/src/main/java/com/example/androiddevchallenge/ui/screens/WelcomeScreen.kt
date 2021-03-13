@@ -100,20 +100,3 @@ fun WelcomeMain(clickAction: () -> Unit) {
         }
     }
 }
-
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        WelcomeScreen(navController = null)
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        WelcomeScreen(navController = null)
-    }
-}

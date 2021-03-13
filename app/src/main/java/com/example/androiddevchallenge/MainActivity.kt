@@ -28,6 +28,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.helpers.ROUTE_LOGIN_SCREEN
 import com.example.androiddevchallenge.helpers.ROUTE_WELCOME_SCREEN
+import com.example.androiddevchallenge.ui.screens.LoginScreen
 import com.example.androiddevchallenge.ui.screens.WelcomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
@@ -51,7 +52,7 @@ fun BloomApp(){
             WelcomeScreen(navController = navController)
         }
         composable(ROUTE_LOGIN_SCREEN) {
-
+            LoginScreen(navController = navController)
         }
     }
 }
