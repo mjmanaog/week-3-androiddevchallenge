@@ -23,6 +23,12 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.helpers.ROUTE_LOGIN_SCREEN
+import com.example.androiddevchallenge.helpers.ROUTE_WELCOME_SCREEN
+import com.example.androiddevchallenge.ui.screens.WelcomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                BloomApp()
             }
         }
     }
@@ -38,9 +44,15 @@ class MainActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+fun BloomApp(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = ROUTE_WELCOME_SCREEN){
+        composable(ROUTE_WELCOME_SCREEN){
+            WelcomeScreen(navController = navController)
+        }
+        composable(ROUTE_LOGIN_SCREEN) {
+
+        }
     }
 }
 
@@ -48,7 +60,7 @@ fun MyApp() {
 @Composable
 fun LightPreview() {
     MyTheme {
-        MyApp()
+        BloomApp()
     }
 }
 
@@ -56,6 +68,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp()
+        BloomApp()
     }
 }
