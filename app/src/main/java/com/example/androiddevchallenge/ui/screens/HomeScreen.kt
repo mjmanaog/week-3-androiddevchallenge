@@ -1,7 +1,6 @@
 package com.example.androiddevchallenge.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -10,7 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,14 +37,17 @@ fun HomeScreen() {
 
 @Composable
 fun HomeMain() {
+    var search by remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        Spacer(modifier = Modifier.height(40.dp))
         OutlinedTextField(
-            value = "",
-            onValueChange = { /*TODO*/ },
+            value = search,
+            onValueChange = { search = it },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
@@ -79,19 +81,19 @@ fun HomeMain() {
 }
 
 @Composable
-fun ThemesList(){
+fun ThemesList() {
     LazyRow(content = {
-        items(themesList){ theme ->
+        items(themesList) { theme ->
             ThemesCard(themesData = theme)
         }
     })
 }
 
 @Composable
-fun PlantsList(){
+fun PlantsList() {
     LazyColumn(content = {
-        items(plantsList){ plant ->
-           PlantsCard(plantData = plant)
+        items(plantsList) { plant ->
+            PlantsCard(plantData = plant)
         }
     })
 }
@@ -177,7 +179,7 @@ fun PlantsCard(plantData: DummyPlantsData) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(start = 4.dp, end = 8.dp),
+                        .padding(start = 4.dp),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     Divider()

@@ -13,9 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+@file:Suppress("DEPRECATION")
+
 package com.example.androiddevchallenge
 
+import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
@@ -34,6 +40,7 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        makeStatusBarTransparent()
         setContent {
             MyTheme {
                 BloomApp()
@@ -72,5 +79,14 @@ fun LightPreview() {
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
         BloomApp()
+    }
+}
+fun Activity.makeStatusBarTransparent() {
+    window.apply {
+        clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        decorView.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        statusBarColor = Color.TRANSPARENT
     }
 }

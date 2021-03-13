@@ -3,13 +3,15 @@ package com.example.androiddevchallenge.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.helpers.ROUTE_HOME_NAVIGATION_SCREEN
@@ -27,6 +29,8 @@ fun LoginScreen(navController: NavController?) {
 
 @Composable
 fun LoginMain(clickAction: () -> Unit) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,22 +46,36 @@ fun LoginMain(clickAction: () -> Unit) {
             )
         )
         OutlinedTextField(
-            value = "",
-            onValueChange = { /*TODO*/ },
-            label = { Text("Email address", style = MaterialTheme.typography.body1) },
+            value = email,
+            onValueChange = { email = it },
+            placeholder = { Text("Email address", style = MaterialTheme.typography.body1) },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
         OutlinedTextField(
-            value = "",
-            onValueChange = { /*TODO*/ },
-            label = { Text("Password (8+ characters)", style = MaterialTheme.typography.body1) },
+            value = password,
+            onValueChange = { password = it },
+            placeholder = {
+                Text(
+                    "Password (8+ characters)",
+                    style = MaterialTheme.typography.body1
+                )
+            },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.fillMaxWidth()
         )
-        val text = HtmlCompat.fromHtml("By clicking below, you agree to our <u>Terms of Use</u> and consent to our <u>Privacy Policy</u>", HtmlCompat.FROM_HTML_MODE_LEGACY)
+
         Text(
-            text = text.toString(),
+            text = with(AnnotatedString.Builder("By clicking below, you agree to our ")) {
+                pushStyle(SpanStyle(textDecoration = TextDecoration.Underline))
+                append("Terms of Use")
+                pop()
+                append(" and consent to our ")
+                pushStyle(SpanStyle(textDecoration = TextDecoration.Underline))
+                append("Privacy Policy")
+                addStyle(SpanStyle(color = MaterialTheme.colors.onPrimary), "Hello World".length, this.length)
+                toAnnotatedString()
+            },
             style = MaterialTheme.typography.body2,
             modifier = Modifier.padding(
                 bottom = 16.dp,
