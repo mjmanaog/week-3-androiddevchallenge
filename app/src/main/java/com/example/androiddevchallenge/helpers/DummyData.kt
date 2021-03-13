@@ -6,8 +6,8 @@ data class DummyThemesData(val image: Int, val title: String)
 data class DummyPlantsData(val image: Int, val title: String, val description: String)
 
 val themesList = arrayListOf(
-    DummyThemesData(R.drawable.img_desert_chiq, "Desert chic"),
-    DummyThemesData(R.drawable.img_desert_chiq, "Tiny terrariums"),
+    DummyThemesData(R.drawable.img_desert_chic, "Desert chic"),
+    DummyThemesData(R.drawable.img_tiny_terrarium, "Tiny terrariums"),
     DummyThemesData(R.drawable.img_jungle_vibes, "Jungle vibes"),
     DummyThemesData(R.drawable.img_easy_care, "Easy care"),
     DummyThemesData(R.drawable.img_statements, "Statements"),

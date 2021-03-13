@@ -28,7 +28,8 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 fun HomeScreen() {
     Surface(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .padding(bottom = 40.dp),
         color = MaterialTheme.colors.onSecondary
     ) {
         HomeMain()
