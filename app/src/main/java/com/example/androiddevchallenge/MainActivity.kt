@@ -18,16 +18,15 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.helpers.ROUTE_HOME_NAVIGATION_SCREEN
 import com.example.androiddevchallenge.helpers.ROUTE_LOGIN_SCREEN
 import com.example.androiddevchallenge.helpers.ROUTE_WELCOME_SCREEN
+import com.example.androiddevchallenge.ui.screens.HomeNavigation
 import com.example.androiddevchallenge.ui.screens.LoginScreen
 import com.example.androiddevchallenge.ui.screens.WelcomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
 // Start building your app here!
 @Composable
-fun BloomApp(){
+fun BloomApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = ROUTE_WELCOME_SCREEN){
         composable(ROUTE_WELCOME_SCREEN){
@@ -53,6 +52,9 @@ fun BloomApp(){
         }
         composable(ROUTE_LOGIN_SCREEN) {
             LoginScreen(navController = navController)
+        }
+        composable(ROUTE_HOME_NAVIGATION_SCREEN) {
+            HomeNavigation()
         }
     }
 }

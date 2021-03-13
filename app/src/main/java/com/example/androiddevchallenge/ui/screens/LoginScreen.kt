@@ -1,6 +1,5 @@
 package com.example.androiddevchallenge.ui.screens
 
-import android.text.Html
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -8,15 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
-import com.example.androiddevchallenge.helpers.ROUTE_HOME_SCREEN
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.helpers.ROUTE_HOME_NAVIGATION_SCREEN
 
 @Composable
 fun LoginScreen(navController: NavController?) {
@@ -25,7 +21,7 @@ fun LoginScreen(navController: NavController?) {
             .fillMaxSize()
             .background(MaterialTheme.colors.background)
     ) {
-        LoginMain(clickAction = { navController?.navigate(ROUTE_HOME_SCREEN) })
+        LoginMain(clickAction = { navController?.navigate(ROUTE_HOME_NAVIGATION_SCREEN) })
     }
 }
 
@@ -70,7 +66,7 @@ fun LoginMain(clickAction: () -> Unit) {
             textAlign = TextAlign.Center,
         )
         Button(
-            onClick = { /*TODO*/ },
+            onClick = clickAction,
             shape = MaterialTheme.shapes.medium,
             colors = ButtonDefaults.textButtonColors(
                 backgroundColor = MaterialTheme.colors.secondary,
@@ -82,21 +78,5 @@ fun LoginMain(clickAction: () -> Unit) {
         ) {
             Text(text = "Log in", style = MaterialTheme.typography.button)
         }
-    }
-}
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        LoginScreen(navController = null)
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        LoginScreen(navController = null)
     }
 }

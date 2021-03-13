@@ -1,27 +1,24 @@
 package com.example.androiddevchallenge.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.helpers.ROUTE_LOGIN_SCREEN
 import com.example.androiddevchallenge.ui.components.ReusableImage
-import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
 fun WelcomeScreen(navController: NavController?) {
     Surface(
         modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.primary)
+            .fillMaxSize(),
+        color = MaterialTheme.colors.primary
     ) {
         WelcomeMain(clickAction = { navController?.navigate(ROUTE_LOGIN_SCREEN) })
     }
