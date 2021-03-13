@@ -11,10 +11,12 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.helpers.ROUTE_HOME_NAVIGATION_SCREEN
+import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
 fun LoginScreen(navController: NavController?) {
@@ -96,5 +98,21 @@ fun LoginMain(clickAction: () -> Unit) {
         ) {
             Text(text = "Log in", style = MaterialTheme.typography.button)
         }
+    }
+}
+
+@Preview("Light Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun LightPreview() {
+    MyTheme {
+        LoginScreen(navController = null)
+    }
+}
+
+@Preview("Dark Theme", widthDp = 360, heightDp = 640)
+@Composable
+fun DarkPreview() {
+    MyTheme(darkTheme = true) {
+        LoginScreen(navController = null)
     }
 }

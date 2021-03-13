@@ -81,6 +81,7 @@ fun DarkPreview() {
         BloomApp()
     }
 }
+
 fun Activity.makeStatusBarTransparent() {
     window.apply {
         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

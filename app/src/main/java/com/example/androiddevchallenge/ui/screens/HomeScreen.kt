@@ -191,19 +191,3 @@ fun PlantsCard(plantData: DummyPlantsData) {
         }
     }
 }
-
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        HomeScreen()
-    }
-}
-
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        HomeScreen()
-    }
-}

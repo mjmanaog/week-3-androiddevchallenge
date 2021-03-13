@@ -50,7 +50,7 @@ fun WelcomeMain(clickAction: () -> Unit) {
                             modifier = Modifier
                                 .wrapContentSize()
                                 .padding(bottom = 32.dp, top = 72.dp)
-                                .offset(56.dp)
+                                .offset(48.dp)
                         )
                     }
                     Column(
