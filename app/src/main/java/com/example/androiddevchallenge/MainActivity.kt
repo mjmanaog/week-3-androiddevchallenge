@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun BloomApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = ROUTE_WELCOME_SCREEN){
-        composable(ROUTE_WELCOME_SCREEN){
+    NavHost(navController = navController, startDestination = ROUTE_WELCOME_SCREEN) {
+        composable(ROUTE_WELCOME_SCREEN) {
             WelcomeScreen(navController = navController)
         }
         composable(ROUTE_LOGIN_SCREEN) {
